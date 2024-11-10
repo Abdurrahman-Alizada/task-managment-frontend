@@ -1,9 +1,10 @@
 "use client";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseURL } from "../../baseURL";
 
 export const userApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:7000", // Adjust this to your environment variable if needed
+    baseUrl: baseURL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) headers.set("Authorization", `Bearer ${token}`);

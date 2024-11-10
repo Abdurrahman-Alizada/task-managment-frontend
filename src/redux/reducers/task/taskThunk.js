@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseURL } from "../../baseURL";
 
 export const taskApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:7000", // Adjust to your environment variable if needed
+    baseUrl: baseURL,
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
       if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -27,15 +28,15 @@ export const taskApi = createApi({
     }),
     getTaskById: build.query({
       query: (id) => `/tasks/getTaskById/${id}`,
-      providesTags:["Task"],
+      providesTags: ["Task"],
     }),
     getDashboardStat: build.query({
       query: () => `/auth/getDashboardStats`,
-      providesTags:["Task"],
+      providesTags: ["Task"],
     }),
     getUserTask: build.query({
       query: () => `/tasks/getUserTasks`,
-      providesTags:["Task"],
+      providesTags: ["Task"],
     }),
     updateTask: build.mutation({
       query: ({ id, ...updatedTaskData }) => ({

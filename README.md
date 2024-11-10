@@ -73,7 +73,7 @@ git commit -m "Initial commit"
 git push origin main
 ```
 
-### Deploy on Vercel
+### Deploy on Netlify
 
 1. Go to Netlify
 2. Import your GitHub repository

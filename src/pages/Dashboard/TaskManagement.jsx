@@ -253,15 +253,15 @@ const TaskTable = () => {
                   <div className="flex flex-wrap gap-2">
                     {task.assignedTo?.map((assigned) => (
                       <div
-                        key={assigned.userId._id}
+                        key={assigned?.userId?._id}
                         className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded"
                       >
-                        <span className="text-sm">{assigned.userId.name}</span>
+                        <span className="text-sm">{assigned?.userId?.name}</span>
                         {(currentLoginUser?.role == "Admin" ||
                           currentLoginUser?.role == "Manager") && (
                           <button
                             onClick={() => {
-                              handleRemoveUser(task._id, assigned.userId._id);
+                              handleRemoveUser(task?._id, assigned?.userId?._id);
                             }}
                             className="text-red-500 hover:text-red-700 ml-1"
                           >
@@ -491,7 +491,7 @@ const TaskTable = () => {
               <div className="mb-4 max-h-48 overflow-y-auto border border-gray-200 rounded-md">
                 {searchResults.results.map((user) => {
                   const isAlreadyAssigned = selectedTask.assignedTo?.some(
-                    (assigned) => assigned.userId._id === user._id
+                    (assigned) => assigned?.userId?._id === user?._id
                   );
 
                   return (
@@ -539,22 +539,22 @@ const TaskTable = () => {
                 <div className="space-y-2">
                   {selectedTask.assignedTo.map((assigned) => (
                     <div
-                      key={assigned.userId._id}
+                      key={assigned?.userId?._id}
                       className="flex items-center justify-between p-2 bg-gray-50 rounded-md"
                     >
                       <div>
                         <div className="font-medium">
-                          {assigned.userId.name}
+                          {assigned?.userId?.name}
                         </div>
                         <div className="text-sm text-gray-500">
-                          {assigned.userId.email}
+                          {assigned?.userId?.email}
                         </div>
                       </div>
                       <button
                         onClick={() =>
                           handleRemoveUser(
                             selectedTask._id,
-                            assigned.userId._id
+                            assigned?.userId?._id
                           )
                         }
                         className="text-red-500 hover:text-red-700"

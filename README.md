@@ -75,7 +75,7 @@ git push origin main
 
 ### Deploy on Vercel
 
-1. Go to [vercel.com](https://vercel.com)
+1. Go to Netlify
 2. Import your GitHub repository
 3. Configure project settings:
    - Framework Preset: `Vite`
